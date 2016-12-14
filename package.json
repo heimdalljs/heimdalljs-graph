@@ -11,7 +11,7 @@
   "files": [
     "dist/index.js"
   ],
-  "repository": "git@github.com:hjdivad/heimdalljs-tree",
+  "repository": "git@github.com:heimdalljs/heimdalljs-tree",
   "author": "David J. Hamilton, Stefan Penner",
   "license": "MIT",
   "devDependencies": {
