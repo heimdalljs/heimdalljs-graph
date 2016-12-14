@@ -39,9 +39,9 @@ export default class Node {
   }
 
   *ancestorsIterator() {
-    if (this.parent) {
-      yield this.parent;
-      yield* this.parent.ancestorsIterator();
+    if (this._parent) {
+      yield this._parent;
+      yield* this._parent.ancestorsIterator();
     }
   }
 
