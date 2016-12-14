@@ -26,6 +26,10 @@ export default class Node {
     }
   }
 
+  *[Symbol.iterator]() {
+    yield* this.preOrderIterator();
+  }
+
   *postOrderIterator(until=(x => false)) {
     for (let child of this._children) {
       if (until && until(child)) {
