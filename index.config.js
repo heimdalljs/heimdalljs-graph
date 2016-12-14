@@ -8,7 +8,7 @@ export default {
   moduleName: 'heimdalljs-tree',
   format: 'cjs',
   external: [
-    'fs', 'heimdalljs', 'regenerator-runtime'
+    'fs', 'heimdalljs'
   ],
   plugins: [
     babel({ exclude: 'node_modules/**' }),
