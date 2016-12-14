@@ -99,4 +99,19 @@ describe('heimdalljs-tree', function() {
       ]);
     });
   });
+
+  describe('Symbol.iterator', function() {
+    it('works', function() {
+      let tree = loadFromNode(node);
+
+      let names = [];
+      for (let node of tree) {
+        names.push(node.label.name);
+      }
+
+      expect(names, 'pre order').to.eql([
+        'a', 'b1', 'c1', 'b2', 'c2', 'c3'
+      ]);
+    });
+  });
 });
