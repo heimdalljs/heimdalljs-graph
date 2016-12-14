@@ -1,13 +1,13 @@
 import keyValueIterator from './utils/key-value-iterator';
 
 export default class Node {
-  constructor(id, label, stats, children) {
+  constructor(id, label, stats, children = []) {
     this._id = id;
     this._label = label;
     this._stats = stats;
 
     this._parent = null;
-    this._children = [];
+    this._children = children;
   }
 
   get label() {
