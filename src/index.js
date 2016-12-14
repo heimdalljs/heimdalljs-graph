@@ -3,6 +3,8 @@
 // TODO: load from serialized graph (broccoli-viz-x.json)
 // TODO: maybe lazy load
 
+import regeneratorRuntime from "regenerator-runtime";
+
 import fs from 'fs';
 
 import Node from './node';
