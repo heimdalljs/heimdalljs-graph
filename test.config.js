@@ -5,8 +5,11 @@ import json from 'rollup-plugin-json';
 
 export default {
   entry: 'tests/index.js',
-  moduleName: 'heimdalljs-query',
+  moduleName: 'heimdalljs-tree',
   format: 'cjs',
+  external: [
+    'fs', 'heimdalljs', 'regenerator-runtime', 'chai'
+  ],
   plugins: [
     babel({ exclude: 'node_modules/**' }),
     nodeResolve({ jsnext: true, main: true }),
