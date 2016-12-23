@@ -5,7 +5,7 @@ import json from 'rollup-plugin-json';
 
 export default {
   entry: 'src/index.js',
-  moduleName: 'heimdalljs-tree',
+  moduleName: 'heimdalljs-graph',
   format: 'cjs',
   external: [
     'fs', 'heimdalljs'

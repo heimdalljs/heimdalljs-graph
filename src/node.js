@@ -14,7 +14,7 @@ export default class Node {
     return this._label;
   }
 
-  *preOrderIterator(until=(x => false)) {
+  *dfsIterator(until=(x => false)) {
     yield this;
 
     for (let child of this._children) {
@@ -22,21 +22,21 @@ export default class Node {
         continue;
       }
 
-      yield* child.preOrderIterator(until);
+      yield* child.dfsIterator(until);
     }
   }
 
   *[Symbol.iterator]() {
-    yield* this.preOrderIterator();
+    yield* this.dfsIterator();
   }
 
-  *postOrderIterator(until=(x => false)) {
+  *bfsIterator(until=(x => false)) {
     for (let child of this._children) {
       if (until && until(child)) {
         continue;
       }
 
-      yield* child.postOrderIterator(until);
+      yield* child.bfsIterator(until);
     }
 
     yield this;
@@ -56,7 +56,7 @@ export default class Node {
   toJSON() {
     let nodes = [];
 
-    for (let node of this.preOrderIterator()) {
+    for (let node of this.dfsIterator()) {
       nodes.push({
         id: node._id,
         label: node._label,

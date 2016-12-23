@@ -4,7 +4,7 @@ import { loadFromNode } from '../src';
 
 const { expect } = chai;
 
-describe('heimdalljs-tree', function() {
+describe('heimdalljs-graph', function() {
   let node;
 
   class StatsSchema {
@@ -50,12 +50,12 @@ describe('heimdalljs-tree', function() {
     });
   });
 
-  describe('preOrderIterator', function() {
+  describe('dfsIterator', function() {
     it('works', function() {
       let tree = loadFromNode(node);
 
       let names = [];
-      for (let node of tree.preOrderIterator()) {
+      for (let node of tree.dfsIterator()) {
         names.push(node.label.name);
       }
       expect(names, 'pre order').to.eql([
@@ -64,12 +64,12 @@ describe('heimdalljs-tree', function() {
     });
   });
 
-  describe('postOrderIterator', function() {
+  describe('bfsIterator', function() {
     it('works', function() {
       let tree = loadFromNode(node);
 
       let names = [];
-      for (let node of tree.postOrderIterator()) {
+      for (let node of tree.bfsIterator()) {
         names.push(node.label.name);
       }
       expect(names, 'post order').to.eql([
@@ -83,7 +83,7 @@ describe('heimdalljs-tree', function() {
       let tree = loadFromNode(node);
 
       let c2 = null;
-      for (let node of tree.preOrderIterator()) {
+      for (let node of tree.dfsIterator()) {
         if (node.label.name === 'c2') {
           c2 = node;
           break;
