@@ -50,12 +50,12 @@ describe('heimdalljs-graph', function() {
     });
   });
 
-  describe('preOrderIterator', function() {
+  describe('dfsIterator', function() {
     it('works', function() {
       let tree = loadFromNode(node);
 
       let names = [];
-      for (let node of tree.preOrderIterator()) {
+      for (let node of tree.dfsIterator()) {
         names.push(node.label.name);
       }
       expect(names, 'pre order').to.eql([
@@ -83,7 +83,7 @@ describe('heimdalljs-graph', function() {
       let tree = loadFromNode(node);
 
       let c2 = null;
-      for (let node of tree.preOrderIterator()) {
+      for (let node of tree.dfsIterator()) {
         if (node.label.name === 'c2') {
           c2 = node;
           break;
