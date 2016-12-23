@@ -30,13 +30,13 @@ export default class Node {
     yield* this.dfsIterator();
   }
 
-  *postOrderIterator(until=(x => false)) {
+  *bfsIterator(until=(x => false)) {
     for (let child of this._children) {
       if (until && until(child)) {
         continue;
       }
 
-      yield* child.postOrderIterator(until);
+      yield* child.bfsIterator(until);
     }
 
     yield this;

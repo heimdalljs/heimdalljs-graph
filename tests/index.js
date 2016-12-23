@@ -64,12 +64,12 @@ describe('heimdalljs-graph', function() {
     });
   });
 
-  describe('postOrderIterator', function() {
+  describe('bfsIterator', function() {
     it('works', function() {
       let tree = loadFromNode(node);
 
       let names = [];
-      for (let node of tree.postOrderIterator()) {
+      for (let node of tree.bfsIterator()) {
         names.push(node.label.name);
       }
       expect(names, 'post order').to.eql([
