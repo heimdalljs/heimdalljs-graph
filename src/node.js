@@ -42,6 +42,12 @@ export default class Node {
     yield this;
   }
 
+  *adjacentIterator() {
+    for (let child of this._children) {
+      yield child;
+    }
+  }
+
   *ancestorsIterator() {
     if (this._parent) {
       yield this._parent;

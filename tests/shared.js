@@ -100,6 +100,21 @@ describe('heimdalljs-graph-shared', function() {
     });
   });
 
+  describe('adjacentIterator', function() {
+    it('works', function() {
+      let tree = loadFromNode(node);
+
+      let names = [];
+      for (let node of tree.adjacentIterator()) {
+        names.push(node.label.name);
+      }
+
+      expect(names, 'adjacent nodes').to.eql([
+        'f', 'k'
+      ]);
+    });
+  });
+
   describe('Symbol.iterator', function() {
     it('works', function() {
       let tree = loadFromNode(node);

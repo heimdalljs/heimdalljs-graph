@@ -144,6 +144,28 @@ for (n of node.bfsIterator()) {
 // Funnel
 ```
 
+### adjacentIterator()
+
+Returns an iterator that yields each adjacent outbound node. There is no guarantee
+about the order in which they are yielded.
+
+Example:
+
+```js
+// for a graph
+//  TreeMerger
+//    |- Babel_1
+//    |--|- Funnel
+//    |- Babel_2
+for (n of node.childIterator()) {
+  console.log(n.label.name);
+}
+// prints
+//
+// Babel_1
+// Babel_2
+```
+
 ### statsIterator()
 
 Returns an iterator that yields `[name, value]` pairs of stat names and values.
