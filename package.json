@@ -1,12 +1,13 @@
 {
   "name": "heimdalljs-graph",
   "version": "0.2.0",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "jsnext:main": "dist/es6/index.js",
   "scripts": {
-    "build": "rollup --no-strict -c test.config.js && rollup -c index.config.js",
+    "build": "node ./scripts/build.js",
     "pretest": "npm run build",
-    "test": "mocha dist/tests/index.js",
-    "test:debug": "npm run build && mocha --no-timeouts debug dist/tests/index.js",
+    "test": "mocha dist/cjs/tests/index.js",
+    "test:debug": "npm run build && mocha --no-timeouts debug dist/cjs/tests/index.js",
     "prepublish": "npm run build"
   },
   "files": [

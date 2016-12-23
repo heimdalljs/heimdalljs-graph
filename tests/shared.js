@@ -4,7 +4,7 @@ import { loadFromNode } from '../src';
 
 const { expect } = chai;
 
-describe('heimdalljs-graph', function() {
+describe('heimdalljs-graph-shared', function() {
   let node;
 
   class StatsSchema {

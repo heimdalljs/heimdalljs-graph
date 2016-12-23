@@ -3,8 +3,6 @@
 // TODO: load from serialized graph (broccoli-viz-x.json)
 // TODO: maybe lazy load
 
-import fs from 'fs';
-
 import Node from './node';
 
 export function loadFromNode(heimdallNode) {
@@ -16,8 +14,7 @@ export function loadFromNode(heimdallNode) {
   return loadFromV02Nodes(nodesJSON);
 }
 
-export function loadFromFile(path) {
-  let json = JSON.parse(fs.readFileSync('./broccoli-viz.0.json', 'UTF8'));
+export function loadFromJSON(json) {
   let nodesJSON = json.nodes;
 
   return loadFromV02Nodes(nodesJSON);
