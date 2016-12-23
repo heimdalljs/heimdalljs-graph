@@ -1,6 +1,6 @@
 {
   "name": "heimdalljs-graph",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "main": "dist/index.js",
   "scripts": {
     "build": "rollup --no-strict -c test.config.js && rollup -c index.config.js",
