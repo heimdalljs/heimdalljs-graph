@@ -77,8 +77,20 @@ describe('heimdalljs-graph-shared', function() {
       for (let node of tree.bfsIterator()) {
         names.push(node.label.name);
       }
-      expect(names, 'post order').to.eql([
-        'd', 'a', 'h', 'f', 'z', 'k', 'j'
+      expect(names).to.eql([
+        'j', 'f', 'k', 'a', 'h', 'z', 'd'
+      ]);
+    });
+
+    it('allows specifying `until`', function() {
+      let tree = loadFromNode(node);
+
+      let names = [];
+      for (let node of tree.bfsIterator(n => n.label.name === 'a')) {
+        names.push(node.label.name);
+      }
+      expect(names).to.eql([
+        'j', 'f', 'k', 'h', 'z'
       ]);
     });
   });

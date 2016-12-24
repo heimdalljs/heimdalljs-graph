@@ -31,15 +31,20 @@ export default class Node {
   }
 
   *bfsIterator(until=(x => false)) {
-    for (let child of this._children) {
-      if (until && until(child)) {
-        continue;
+    let queue = [this];
+
+    while (queue.length > 0) {
+      let node = queue.shift();
+      yield node;
+
+      for (let child of node.adjacentIterator()) {
+        if (until && until(child)) {
+          continue;
+        }
+
+        queue.push(child);
       }
-
-      yield* child.bfsIterator(until);
     }
-
-    yield this;
   }
 
   *adjacentIterator() {
