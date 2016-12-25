@@ -1,6 +1,6 @@
 import chai from 'chai';
 import Heimdall from 'heimdalljs/heimdall';
-import { loadFromNode } from '../src';
+import { loadFromNode, loadFromJSON } from '../src';
 
 const { expect } = chai;
 
@@ -141,6 +141,60 @@ describe('heimdalljs-graph-shared', function() {
         names.push(node.label.name);
       }
 
+      expect(names, 'depth first, pre order').to.eql([
+        'j','f','a','d','h','k','z'
+      ]);
+    });
+  });
+
+  describe('.loadFromJSON', function() {
+    it('works with broccoli-viz output from heimdall@0.2', function() {
+      let data = {
+        nodes: [
+          {
+            _id: 1,
+            id: { name: 'j' },
+            stats: { own: {}, time: { self: 2734} },
+            children: [ 2, 6 ]
+          }, {
+            _id: 2,
+            id: { name: 'f' },
+            stats: { own: {}, time: { self: 2257} },
+            children: [ 3, 5 ]
+          }, {
+            _id: 3,
+            id: { name: 'a' },
+            stats: { own: {}, time: { self: 1842} },
+            children: [ 4 ]
+          }, {
+            _id: 4,
+            id: { name: 'd' },
+            stats: { own: {}, time: { self: 1738} },
+            children: []
+          }, {
+            _id: 5,
+            id: { name: 'h' },
+            stats: { own: {}, time: { self: 1245 } },
+            children: []
+          }, {
+            _id: 6,
+            id: { name: 'k' },
+            stats: { own: {}, time: { self: 1596 } },
+            children: [ 7 ]
+          }, {
+            _id: 7,
+            id: { name: 'z' },
+            stats: { own: {}, time: { self: 1229 } },
+            children: []
+          }
+        ]
+      };
+
+      let tree = loadFromJSON(data);
+      let names = [];
+      for (let node of tree.dfsIterator()) {
+        names.push(node.label.name);
+      }
       expect(names, 'depth first, pre order').to.eql([
         'j','f','a','d','h','k','z'
       ]);
