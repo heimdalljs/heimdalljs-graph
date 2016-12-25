@@ -527,7 +527,7 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
-glob@7.0.5:
+glob@7.0.5, glob@^7.0.5:
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.0.5.tgz#b4202a69099bbb4d292a7c1b95b6682b67ebdc95"
   dependencies:
@@ -715,6 +715,14 @@ ms@0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
 
+multidep@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/multidep/-/multidep-2.0.1.tgz#a98c498243b5d077ef368ff50039130858904d02"
+  dependencies:
+    rimraf "^2.4.3"
+    rsvp "^3.1.0"
+    spawn-cmd "0.0.2"
+
 number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
@@ -793,6 +801,12 @@ resolve@^1.1.6, resolve@^1.1.7:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.2.0.tgz#9589c3f2f6149d1417a40becc1663db6ec6bc26c"
 
+rimraf@^2.4.3:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.5.4.tgz#96800093cbf1a0c86bd95b4625467535c29dfa04"
+  dependencies:
+    glob "^7.0.5"
+
 rollup-plugin-babel@^2.7.0:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/rollup-plugin-babel/-/rollup-plugin-babel-2.7.1.tgz#16528197b0f938a1536f44683c7a93d573182f57"
@@ -839,7 +853,7 @@ rollup@^0.37.0:
   dependencies:
     source-map-support "^0.4.0"
 
-rsvp@~3.2.1:
+rsvp@^3.1.0, rsvp@~3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-3.2.1.tgz#07cb4a5df25add9e826ebc67dcc9fd89db27d84a"
 
@@ -856,6 +870,10 @@ source-map-support@^0.4.0, source-map-support@^0.4.2:
 source-map@^0.5.0, source-map@^0.5.3:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
+
+spawn-cmd@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/spawn-cmd/-/spawn-cmd-0.0.2.tgz#6d5e251fad0eab00b0f193d245669a7a228ec0de"
 
 strip-ansi@^3.0.0:
   version "3.0.1"

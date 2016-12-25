@@ -5,7 +5,7 @@
   "jsnext:main": "dist/es6/index.js",
   "scripts": {
     "build": "node ./scripts/build.js",
-    "pretest": "npm run build",
+    "pretest": "npm run build && multidep tests/multidep.json",
     "test": "mocha dist/cjs/tests/index.js",
     "test:debug": "npm run build && mocha --no-timeouts debug dist/cjs/tests/index.js",
     "prepublish": "npm run build"
@@ -24,6 +24,7 @@
     "chai": "^3.5.0",
     "heimdalljs": "^0.2.3",
     "mocha": "^3.2.0",
+    "multidep": "^2.0.1",
     "rollup": "^0.37.0",
     "rollup-plugin-babel": "^2.7.0",
     "rollup-plugin-commonjs": "^5.0.5",
