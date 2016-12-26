@@ -1,6 +1,6 @@
 {
   "path": "tests/multidep",
   "versions": {
-    "heimdalljs": ["0.2.3", "0.3.2"]
+    "heimdalljs": ["0.2.3"]
   }
 }
