@@ -11,7 +11,9 @@
     "prepublish": "npm run build"
   },
   "files": [
-    "dist/index.js"
+    "dist/",
+    "!dist/cjs/tests/",
+    "!dist/amd/tests/"
   ],
   "repository": "git@github.com:heimdalljs/heimdalljs-graph",
   "author": "David J. Hamilton, Stefan Penner",
