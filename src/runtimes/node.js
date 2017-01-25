@@ -1,7 +1,7 @@
 import fs from 'fs';
 import {
   loadFromNode as loadFromNode$1,
-  loadFromJSON as loadFromJSON$1
+  loadFromJSON as loadFromJSON$1,
 } from '../index.js';
 
 export function loadFromFile(path) {
