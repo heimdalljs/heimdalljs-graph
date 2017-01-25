@@ -27,16 +27,26 @@ function loadFromV02Nodes(nodesJSON) {
   let root = null;
 
   for (let jsonNode of nodesJSON) {
-    nodesById[jsonNode._id] = new Node(jsonNode._id, jsonNode.id, jsonNode.stats);
+    let id, label;
+
+    if (jsonNode._id) {
+      [id, label] = [jsonNode._id, jsonNode.id];
+    } else {
+      [id, label] = [jsonNode.id, jsonNode.label];
+    }
+
+    nodesById[id] = new Node(id, label, jsonNode.stats);
 
     if (root === null) {
-      root = nodesById[jsonNode._id];
+      root = nodesById[id];
     }
   }
 
   for (let jsonNode of nodesJSON) {
-    let node = nodesById[jsonNode._id];
-    let children = jsonNode.children.map(function (childId) {
+    let id = jsonNode._id || jsonNode.id;
+
+    let node = nodesById[id];
+    let children = jsonNode.children.map(childId => {
       let child = nodesById[childId];
 
       if (!child) {
