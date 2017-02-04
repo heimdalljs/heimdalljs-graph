@@ -7,7 +7,7 @@ var babel = require('rollup-plugin-babel');
 var commonjs = require('rollup-plugin-commonjs');
 var json = require('rollup-plugin-json');
 
-function build(entry, dest, format) {
+function build(entry, dest, format, moduleId) {
   rollup.rollup({
     entry: entry,
 
@@ -24,12 +24,13 @@ function build(entry, dest, format) {
     .then(function (bundle) {
       bundle.write({
         format: format,
+        moduleId: moduleId,
         dest: dest
       });
     });
 }
 
-build('src/runtimes/browser.js', 'dist/amd/heimdalljs-graph.js', 'amd');
+build('src/runtimes/browser.js', 'dist/amd/heimdalljs-graph.js', 'amd', 'heimdalljs-graph');
 build('src/runtimes/node.js', 'dist/cjs/index.js', 'cjs');
-build('tests/runtimes/browser.js', 'dist/amd/heimdalljs-graph-tests.js', 'amd');
+build('tests/runtimes/browser.js', 'dist/amd/heimdalljs-graph-tests.js', 'amd', 'heimdalljs-graph-tests');
 build('tests/runtimes/node.js', 'dist/cjs/tests/index.js', 'cjs');
