@@ -11,6 +11,7 @@
     "prepublish": "npm run build"
   },
   "files": [
+    "src/",
     "dist/",
     "!dist/cjs/tests/",
     "!dist/amd/tests/"
