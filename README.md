@@ -157,7 +157,7 @@ Example:
 //    |- Babel_1
 //    |--|- Funnel
 //    |- Babel_2
-for (n of node.childIterator()) {
+for (n of node.adjacentIterator()) {
   console.log(n.label.name);
 }
 // prints
