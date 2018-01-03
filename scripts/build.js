@@ -12,7 +12,7 @@ function build(entry, dest, format, moduleId) {
     entry: entry,
 
     external: [
-      'fs', 'heimdalljs', 'chai'
+      'fs', 'heimdalljs', 'chai', 'multidep'
     ],
     plugins: [
       babel({ exclude: 'node_modules/**' }),

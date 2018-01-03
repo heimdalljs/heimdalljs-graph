@@ -1,12 +1,10 @@
 import chai from 'chai';
-import Heimdall from 'heimdalljs/heimdall';
-import { loadFromNode } from '../src';
+import { loadFromNode, loadFromJSON } from '../src';
 
 const { expect } = chai;
 
-describe('heimdalljs-graph-shared', function() {
+export default function testGenerator(Heimdall, version) {
   let node;
-
   class StatsSchema {
     constructor() {
       this.x = 0;
@@ -29,22 +27,42 @@ describe('heimdalljs-graph-shared', function() {
       \
        d
     */
+    if (version === '0.2.3') {
+      let j = heimdall.start('j');
+      let f = heimdall.start('f');
+      let a = heimdall.start('a');
+      let d = heimdall.start('d');
+      d.stop();
+      a.stop();
+      let h = heimdall.start('h');
+      h.stop();
+      f.stop();
+      let k = heimdall.start('k');
+      let z = heimdall.start('z');
+      z.stop();
+      k.stop();
 
-    let j = heimdall.start('j');
-    let f = heimdall.start('f');
-    let a = heimdall.start('a');
-    let d = heimdall.start('d');
-    d.stop();
-    a.stop();
-    let h = heimdall.start('h');
-    h.stop();
-    f.stop();
-    let k = heimdall.start('k');
-    let z = heimdall.start('z');
-    z.stop();
-    k.stop();
+      node = heimdall.root._children[0];
+    } else {
+      let j = heimdall.start('j');
+      let f = heimdall.start('f');
+      let a = heimdall.start('a');
+      let d = heimdall.start('d');
+      heimdall.stop(d);
+      heimdall.stop(a);
+      let h = heimdall.start('h');
+      heimdall.stop(h);
+      heimdall.stop(f);
+      let k = heimdall.start('k');
+      let z = heimdall.start('z');
+      heimdall.stop(z);
+      heimdall.stop(k);
 
-    node = heimdall.root._children[0];
+      // this should not be needed
+      // we should be able to pass the current
+      // `heimdall` node directly
+      node = new Heimdall.Tree(heimdall);
+    }
   });
 
   describe('.loadFromNode', function() {
@@ -146,4 +164,58 @@ describe('heimdalljs-graph-shared', function() {
       ]);
     });
   });
-});
+
+  describe('.loadFromJSON', function() {
+    it('works with broccoli-viz output from heimdall@0.2', function() {
+      let data = {
+        nodes: [
+          {
+            _id: 1,
+            id: { name: 'j' },
+            stats: { own: {}, time: { self: 2734} },
+            children: [ 2, 6 ]
+          }, {
+            _id: 2,
+            id: { name: 'f' },
+            stats: { own: {}, time: { self: 2257} },
+            children: [ 3, 5 ]
+          }, {
+            _id: 3,
+            id: { name: 'a' },
+            stats: { own: {}, time: { self: 1842} },
+            children: [ 4 ]
+          }, {
+            _id: 4,
+            id: { name: 'd' },
+            stats: { own: {}, time: { self: 1738} },
+            children: []
+          }, {
+            _id: 5,
+            id: { name: 'h' },
+            stats: { own: {}, time: { self: 1245 } },
+            children: []
+          }, {
+            _id: 6,
+            id: { name: 'k' },
+            stats: { own: {}, time: { self: 1596 } },
+            children: [ 7 ]
+          }, {
+            _id: 7,
+            id: { name: 'z' },
+            stats: { own: {}, time: { self: 1229 } },
+            children: []
+          }
+        ]
+      };
+
+      let tree = loadFromJSON(data);
+      let names = [];
+      for (let node of tree.dfsIterator()) {
+        names.push(node.label.name);
+      }
+      expect(names, 'depth first, pre order').to.eql([
+        'j','f','a','d','h','k','z'
+      ]);
+    });
+  });
+}
