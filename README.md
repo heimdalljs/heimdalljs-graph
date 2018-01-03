@@ -1,7 +1,7 @@
 # heimdalljs-graph
 
 `heimdalljs-graph` is intended to be the primary entry point for doing visualizations with data
-gathered by [Heimdall](https://github.com/heimdalljs-lib). 
+gathered by [Heimdall](https://github.com/heimdalljs/heimdalljs-lib). 
 
 ## Loading Data
 
