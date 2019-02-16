@@ -2,6 +2,7 @@
   "name": "heimdalljs-graph",
   "version": "0.3.5",
   "main": "dist/cjs/index.js",
+  "browser": "dist/amd/heimdalljs-graph.js",
   "jsnext:main": "dist/es6/index.js",
   "scripts": {
     "build": "node ./scripts/build.js",
