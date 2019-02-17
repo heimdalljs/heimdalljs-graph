@@ -14,7 +14,17 @@ export default class Node {
     return this._label;
   }
 
-  *dfsIterator(until = (() => false)) {
+  *dfsIterator({ until = () => false, order = 'pre' } = {}) {
+    if (order === 'pre') {
+      yield* this._dfsIteratorPreOrder({ until });
+    } else if (order === 'post') {
+      yield* this._dfsIteratorPostOrder({ until });
+    } else {
+      throw new Error(`unknown order: '${order}'; valid orders are: 'pre' and 'post'`);
+    }
+  }
+
+  *_dfsIteratorPreOrder({ until }) {
     yield this;
 
     for (let child of this._children) {
@@ -22,15 +32,27 @@ export default class Node {
         continue;
       }
 
-      yield* child.dfsIterator(until);
+      yield* child._dfsIteratorPreOrder({ until });
     }
+  }
+
+  *_dfsIteratorPostOrder({ until }) {
+    for (let child of this._children) {
+      if (until && until(child)) {
+        continue;
+      }
+
+      yield* child._dfsIteratorPostOrder({ until });
+    }
+
+    yield this;
   }
 
   *[Symbol.iterator]() {
     yield* this.dfsIterator();
   }
 
-  *bfsIterator(until = (() => false)) {
+  *bfsIterator(until = () => false) {
     let queue = [this];
 
     while (queue.length > 0) {
@@ -47,7 +69,7 @@ export default class Node {
     }
   }
 
-  *adjacentIterator() {
+  *childIterator() {
     for (let child of this._children) {
       yield child;
     }
